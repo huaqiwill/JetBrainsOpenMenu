@@ -38,79 +38,7 @@ namespace JetBrainsOpenMenu
             InitializeComponent();
         }
 
-        private bool MenuExist(JetBrainsType key)
-        {
-            string key_ = key.ToString();
-            string menuPath = conf[key_]["path"].StringValue;
-            string menuRoot = Path.GetFileNameWithoutExtension(menuPath);
-            string menuRootRet = (string)Registry.GetValue(@"HKEY_CLASSES_ROOT\Directory\shell\" + key, "", "");
-            return menuRootRet == menuRoot;
-        }
-
-        private void MenuAdd(JetBrainsType key)
-        {
-            string key_ = key.ToString();
-            string menuPath = conf[key_]["path"].StringValue;
-            string menuName = conf[key_]["name"].StringValue;
-            if (string.IsNullOrEmpty(menuPath) || string.IsNullOrEmpty(menuName))
-            {
-                MessageBox.Show("还没有配置" + key_ + "的路径", "请检查配置项", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            string menuRoot = Path.GetFileNameWithoutExtension(menuPath);
-            try
-            {
-                Registry.SetValue(@"HKEY_CLASSES_ROOT\Directory\shell\" + menuRoot, "", menuName);
-                Registry.SetValue(@"HKEY_CLASSES_ROOT\Directory\shell\" + menuRoot, "Icon", "\"" + menuPath + "\"");
-                Registry.SetValue(@"HKEY_CLASSES_ROOT\Directory\shell\" + menuRoot + @"\command", "", "\"" + menuPath + "\" \"%V\"");
-
-                MessageBox.Show("注册表项添加成功", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("添加注册表项时出错：" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void MenuUpdate(JetBrainsType key)
-        {
-            string key_ = key.ToString();
-            string menuPath = conf[key_]["path"].StringValue;
-            string menuName = conf[key_]["name"].StringValue;
-            string menuRoot = Path.GetFileNameWithoutExtension(menuPath);
-
-            try
-            {
-                Registry.SetValue(@"HKEY_CLASSES_ROOT\Directory\shell\" + menuRoot, "", menuName);
-                MessageBox.Show("注册表项更新成功。", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("添加注册表项时出错：" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void MenuDelete(JetBrainsType key)
-        {
-            string key_ = key.ToString();
-            string menuPath = conf[key_]["path"].StringValue;
-            if (string.IsNullOrEmpty(menuPath))
-            {
-                MessageBox.Show("还没有配置" + key_ + "的路径", "请检查配置项", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            string menuRoot = Path.GetFileNameWithoutExtension(menuPath);
-            try
-            {
-                Registry.ClassesRoot.DeleteSubKeyTree(@"Directory\shell\" + menuRoot, false);
-                MessageBox.Show("注册表项已成功删除。", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("删除注册表项时出错：" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
+     
         private void Form1_Load(object sender, EventArgs e)
         {
             if (!File.Exists(jetBrainsIniFilePath)) File.Create(jetBrainsIniFilePath).Close();
@@ -197,62 +125,62 @@ namespace JetBrainsOpenMenu
 
         private void 添加IDEA菜单ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MenuAdd(JetBrainsType.IDEA);
+            OpenMenuTool.MenuAdd(JetBrainsType.IDEA);
         }
 
         private void 添加GoLand菜单ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            MenuAdd(JetBrainsType.GoLand);
+            OpenMenuTool.MenuAdd(JetBrainsType.GoLand);
         }
 
         private void 添加WebStorm菜单ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            MenuAdd(JetBrainsType.WebStorm);
+            OpenMenuTool.MenuAdd(JetBrainsType.WebStorm);
         }
 
         private void 添加PyChaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MenuAdd(JetBrainsType.PyCharm);
+            OpenMenuTool.MenuAdd(JetBrainsType.PyCharm);
         }
 
         private void 添加PhpStorm菜单ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MenuAdd(JetBrainsType.PhpStorm);
+            OpenMenuTool.MenuAdd(JetBrainsType.PhpStorm);
         }
 
         private void 添加CLion菜单ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MenuAdd(JetBrainsType.CLion);
+            OpenMenuTool.MenuAdd(JetBrainsType.CLion);
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            MenuDelete(JetBrainsType.IDEA);
+            OpenMenuTool.MenuDelete(JetBrainsType.IDEA);
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            MenuDelete(JetBrainsType.GoLand);
+            OpenMenuTool.MenuDelete(JetBrainsType.GoLand);
         }
 
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            MenuDelete(JetBrainsType.WebStorm);
+            OpenMenuTool.MenuDelete(JetBrainsType.WebStorm);
         }
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
-            MenuDelete(JetBrainsType.PyCharm);
+            OpenMenuTool.MenuDelete(JetBrainsType.PyCharm);
         }
 
         private void toolStripMenuItem6_Click(object sender, EventArgs e)
         {
-            MenuDelete(JetBrainsType.PhpStorm);
+            OpenMenuTool.MenuDelete(JetBrainsType.PhpStorm);
         }
 
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
-            MenuDelete(JetBrainsType.CLion);
+            OpenMenuTool.MenuDelete(JetBrainsType.CLion);
         }
     }
 }
