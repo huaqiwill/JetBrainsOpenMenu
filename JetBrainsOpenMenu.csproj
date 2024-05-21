@@ -63,6 +63,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonMenuFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommonMenuFrm.Designer.cs">
+      <DependentUpon>CommonMenuFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="JetBrainsOpenMenuFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     <Compile Include="OpenMenuTool.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CommonMenuFrm.resx">
+      <DependentUpon>CommonMenuFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="JetBrainsOpenMenuFrm.resx">
       <DependentUpon>JetBrainsOpenMenuFrm.cs</DependentUpon>
     </EmbeddedResource>

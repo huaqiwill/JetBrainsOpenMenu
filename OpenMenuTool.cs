@@ -14,14 +14,14 @@ namespace JetBrainsOpenMenu
     public class OpenMenuTool
     {
         // 配置项
-        private Configuration conf = Configuration.LoadFromFile("");
+        private static Configuration conf = Configuration.LoadFromFile("");
 
         /// <summary>
         /// 菜单是否已经存在
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public bool MenuExist(JetBrainsType key)
+        public static bool MenuExist(JetBrainsType key)
         {
             string key_ = key.ToString();
             string menuPath = conf[key_]["path"].StringValue;
@@ -34,7 +34,7 @@ namespace JetBrainsOpenMenu
         /// 添加菜单项
         /// </summary>
         /// <param name="key"></param>
-        public void MenuAdd(JetBrainsType key)
+        public static void MenuAdd(JetBrainsType key)
         {
             string key_ = key.ToString();
             string menuPath = conf[key_]["path"].StringValue;
@@ -63,7 +63,7 @@ namespace JetBrainsOpenMenu
         /// 修改菜单名称
         /// </summary>
         /// <param name="key"></param>
-        public void MenuUpdate(JetBrainsType key)
+        public static void MenuUpdate(JetBrainsType key)
         {
             string key_ = key.ToString();
             string menuPath = conf[key_]["path"].StringValue;
@@ -85,7 +85,7 @@ namespace JetBrainsOpenMenu
         /// 删除菜单项
         /// </summary>
         /// <param name="key"></param>
-        public void MenuDelete(JetBrainsType key)
+        public static void MenuDelete(JetBrainsType key)
         {
             string key_ = key.ToString();
             string menuPath = conf[key_]["path"].StringValue;

@@ -65,6 +65,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.button8 = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -364,10 +365,21 @@
             this.statusStrip1.TabIndex = 26;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(546, 47);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(109, 36);
+            this.button8.TabIndex = 27;
+            this.button8.Text = "通用菜单";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // JetBrainsOpenMenuFrm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(670, 385);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
@@ -439,6 +451,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.Button button8;
     }
 }
 

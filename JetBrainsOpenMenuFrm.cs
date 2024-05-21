@@ -38,7 +38,7 @@ namespace JetBrainsOpenMenu
             InitializeComponent();
         }
 
-     
+
         private void Form1_Load(object sender, EventArgs e)
         {
             if (!File.Exists(jetBrainsIniFilePath)) File.Create(jetBrainsIniFilePath).Close();
@@ -181,6 +181,11 @@ namespace JetBrainsOpenMenu
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
             OpenMenuTool.MenuDelete(JetBrainsType.CLion);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            new CommonMenuFrm().ShowDialog();
         }
     }
 }
