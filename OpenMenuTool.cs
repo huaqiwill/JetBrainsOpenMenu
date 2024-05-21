@@ -13,8 +13,39 @@ namespace JetBrainsOpenMenu
     // 菜单管理工具
     public class OpenMenuTool
     {
+        private static string GetAppDir()
+        {
+            string dir = AppDomain.CurrentDomain.BaseDirectory;
+            //Console.WriteLine("当前执行文件的目录是： " + dir);
+            return dir;
+        }
+
+        public static string ConfigPath = Path.Combine(GetAppDir(), "jetbrains_menu.ini");
+
         // 配置项
-        private static Configuration conf = Configuration.LoadFromFile("");
+        private static Configuration conf = Configuration.LoadFromFile(ConfigPath);
+
+        private static void CheckAndSet(JetBrainsType type)
+        {
+            if (!File.Exists(conf[type.ToString()]["path"].StringValue))
+            {
+                conf[type.ToString()]["path"].StringValue = "";
+            }
+        }
+
+        /// <summary>
+        /// 检查配置项文件是否合法，如果不合法则清除路径信息
+        /// </summary>
+        public static void CheckConfPathExists()
+        {
+            CheckAndSet(JetBrainsType.IDEA);
+            CheckAndSet(JetBrainsType.PyCharm);
+            CheckAndSet(JetBrainsType.PhpStorm);
+            CheckAndSet(JetBrainsType.CLion);
+            CheckAndSet(JetBrainsType.WebStorm);
+            CheckAndSet(JetBrainsType.GoLand);
+            conf.SaveToFile(ConfigPath);
+        }
 
         /// <summary>
         /// 菜单是否已经存在

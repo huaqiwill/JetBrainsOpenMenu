@@ -31,7 +31,7 @@ namespace JetBrainsOpenMenu
     {
         private Configuration conf;
 
-        private string jetBrainsIniFilePath = "./jetbrains_menu.ini";
+        private string jetBrainsIniFilePath = OpenMenuTool.ConfigPath;
 
         public JetBrainsOpenMenuFrm()
         {
@@ -42,7 +42,11 @@ namespace JetBrainsOpenMenu
         private void Form1_Load(object sender, EventArgs e)
         {
             if (!File.Exists(jetBrainsIniFilePath)) File.Create(jetBrainsIniFilePath).Close();
+            // 添加路径检查
+            OpenMenuTool.CheckConfPathExists();
+
             conf = Configuration.LoadFromFile(jetBrainsIniFilePath);
+
 
             textBox1.ReadOnly = true;
             textBox2.ReadOnly = true;
