@@ -63,26 +63,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommonMenuFrm.cs">
+    <Compile Include="App\Menu.cs" />
+    <Compile Include="App\MenuUtils.cs" />
+    <Compile Include="Page\MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CommonMenuFrm.Designer.cs">
-      <DependentUpon>CommonMenuFrm.cs</DependentUpon>
+    <Compile Include="Page\MenuForm.Designer.cs">
+      <DependentUpon>MenuForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="JetBrainsOpenMenuFrm.cs">
+    <Compile Include="Page\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="JetBrainsOpenMenuFrm.Designer.cs">
-      <DependentUpon>JetBrainsOpenMenuFrm.cs</DependentUpon>
+    <Compile Include="Page\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OpenMenuTool.cs" />
+    <Compile Include="App\MenuEnvUtils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CommonMenuFrm.resx">
-      <DependentUpon>CommonMenuFrm.cs</DependentUpon>
+    <EmbeddedResource Include="Page\MenuForm.resx">
+      <DependentUpon>MenuForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="JetBrainsOpenMenuFrm.resx">
-      <DependentUpon>JetBrainsOpenMenuFrm.cs</DependentUpon>
+    <EmbeddedResource Include="Page\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

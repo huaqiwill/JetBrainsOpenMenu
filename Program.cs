@@ -21,7 +21,7 @@ namespace JetBrainsOpenMenu
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new JetBrainsOpenMenuFrm());
+            Application.Run(new MainForm());
         }
     }
 }
